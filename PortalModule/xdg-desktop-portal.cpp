@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <cstdarg>
 #include <random>
+#include <algorithm> // std::replace, std::generate
 #include <array>
 #include <utility>
 #include <vector>
