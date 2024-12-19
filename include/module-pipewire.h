@@ -29,6 +29,7 @@ struct PipeWireStream_Event_Connect
 };
 struct PipeWireStream_Event_Disconnect
 {
+	char dummy;
 };
 struct PipeWireStream_Event_MemoryFrameReceived
 {
