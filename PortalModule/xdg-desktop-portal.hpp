@@ -6,6 +6,8 @@
 #ifndef SCREENCAPTURE_XDG_DESKTOP_PORTAL_HPP
 #define SCREENCAPTURE_XDG_DESKTOP_PORTAL_HPP
 
+#include <optional> // std::optional
+
 #include "../common.hpp"
 #include <module-portal.h>
 
