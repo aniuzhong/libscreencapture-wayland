@@ -41,6 +41,8 @@ static constexpr inline AVPixelFormat pixelFormat2AV(PixelFormat format)
 		return AV_PIX_FMT_BGR0;
 	case PixelFormat::RGBX:
 		return AV_PIX_FMT_RGB0;
+	default:
+		return AV_PIX_FMT_NONE;
 	}
 }
 

@@ -20,6 +20,7 @@ static const char* encoderName(Codec c)
 	case Codec::H264: return "h264_vaapi";
 	case Codec::HEVC: return "hevc_vaapi";
 	case Codec::VP9: return "vp9_vaapi";
+	default: return "unknown";
 	}
 }
 
