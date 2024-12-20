@@ -4,6 +4,7 @@
    SPDX-License-Identifier: GPL-3.0-or-later
 *******************************************************************************/
 #include "FFmpegOutput.hpp"
+#include <cassert>
 #include <cstdio>
 #include <cstdarg>
 #include <chrono>
@@ -91,7 +92,13 @@ AVFrame* wrapInAVFrame(std::unique_ptr<MemoryFrame> frame) noexcept
 	f->buf[0] = av_buffer_create(static_cast<uint8_t*>(frame->memory), frame->size, frameDeleter, frame.get(), AV_BUFFER_FLAG_READONLY);
 
 	// release from unique_ptr, it is now owned by f->buf[0]
-	frame.release();
+	auto p = frame.release();
+
+	// explicitly indicate we are not using the returned raw pointer
+	(void)p;
+
+	assert(frame == nullptr);
+
 	return f;
 }
 
@@ -138,7 +145,13 @@ AVFrame* wrapInAVFrame(std::unique_ptr<DmaBufFrame> frame) noexcept
 	f->buf[0] = av_buffer_create(f->data[0], 0, frameDeleter, frame.get(), AV_BUFFER_FLAG_READONLY);
 
 	// release from unique_ptr, it is now owned by f->buf[0]
-	frame.release();
+	auto p = frame.release();
+
+	// explicitly indicate we are not using the returned raw pointer
+	(void)p;
+
+	assert(frame == nullptr);
+
 	return f;
 }
 
