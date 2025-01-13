@@ -9,11 +9,16 @@ function(ImportSDBusCpp)
     set(BUILD_SHARED_LIBS OFF)
     add_subdirectory(sdbus-cpp)
 endfunction()
-# use function to create a new scope for variables
-ImportSDBusCpp()
-# set the PIC flag correctly (is always off otherwise, because it is a static library)
-# but we include it in our library, so it must match in position independence
-set_target_properties(sdbus-c++-objlib PROPERTIES POSITION_INDEPENDENT_CODE ${BUILD_SHARED_LIBS})
+
+if (${BUILD_SDBUS_C++})
+    # use function to create a new scope for variables
+    ImportSDBusCpp()
+    # set the PIC flag correctly (is always off otherwise, because it is a static library)
+    # but we include it in our library, so it must match in position independence
+    set_target_properties(sdbus-c++-objlib PROPERTIES POSITION_INDEPENDENT_CODE ${BUILD_SHARED_LIBS})
+else()
+    find_package(sdbus-c++ CONFIG REQUIRED)
+endif()
 
 add_library(screencapture-module-portal OBJECT
             xdg-desktop-portal.cpp

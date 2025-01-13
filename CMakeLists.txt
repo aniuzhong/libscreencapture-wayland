@@ -17,6 +17,8 @@ option(ENABLE_GSTREAMER_MODULE "Enable the GStreamer encoder module" OFF)
 option(EXPORT_CPP_INTERFACE "Export the C++ interface in addition to the C interface" ON)
 option(BUILD_SHARED_LIBS "Build a shared library instead of a static one" OFF)
 option(BUILD_FFMPEG "Build own ffmpeg libraries instead of using system-provided ones" OFF)
+option(BUILD_SDBUS_C++ "Build own sdbus-c++ instead of using system-provided one" ON)
+
 # use static C++ library by default to reduce possible ABI breakages at runtime
 option(STATIC_LIBSTDC++ "Link with static C++ standard library" ON)
 
