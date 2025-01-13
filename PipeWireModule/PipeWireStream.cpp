@@ -507,6 +507,8 @@ static constexpr inline PixelFormat toCFormat(pw::PixelFormat format)
 			return PixelFormat::BGRX;
 		case pw::PixelFormat::RGBX:
 			return PixelFormat::RGBX;
+		default:
+			throw std::runtime_error("could not convert pw::PixelFormat to PixelFormat");
 	}
 }
 
