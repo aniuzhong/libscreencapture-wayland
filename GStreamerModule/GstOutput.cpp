@@ -6,6 +6,7 @@
 #include <cstdarg>
 #include <chrono>
 #include <string>
+#include <stdexcept>
 
 using namespace std::chrono_literals;
 
@@ -34,6 +35,8 @@ static GstVideoFormat pixelFormat2Gst(PixelFormat format)
 		return GST_VIDEO_FORMAT_BGRx;
 	case PixelFormat::RGBX:
 		return GST_VIDEO_FORMAT_RGBx;
+	default:
+		throw std::runtime_error("could not convert Pixelformat to GstVideoformat: Unknown format");
 	}
 }
 
